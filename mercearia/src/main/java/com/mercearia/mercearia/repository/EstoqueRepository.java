@@ -12,7 +12,11 @@ public interface EstoqueRepository extends MongoRepository<EstoqueDTO, String> {
     @Override
     List<EstoqueDTO> findAll();
 
-    List<EstoqueDTO> procurarEstoquePeloProduto(ProdutoDTO produto);
+    List<EstoqueDTO> findByProduto(ProdutoDTO produto);
 
-    List<EstoqueDTO> procurarEstoqueQuantidadeMenor(int quantidade);
+    List<EstoqueDTO> findByNomeIgnoreCase(String nome);
+
+    List<EstoqueDTO> findByQuantidadeMenor(int quantidade);
+
+    void deleteByNomeIgnoreCase(String nome);
 }

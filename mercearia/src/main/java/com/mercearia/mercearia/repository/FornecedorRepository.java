@@ -15,9 +15,11 @@ public interface FornecedorRepository extends MongoRepository<FornecedorDTO, Str
     @Override
     List<FornecedorDTO> findAllById(Iterable<String> strings);
 
-    List<FornecedorDTO> procurarPeloNomeIgnoreCase(String nome);
+    List<FornecedorDTO> findByNomeIgnoreCase(String nome);
 
-    List<FornecedorDTO> procurarPeloEnderecoIgnoreCase(String endereco);
+    List<FornecedorDTO> findByEnderecoIgnoreCase(String endereco);
 
-    List<FornecedorDTO> procurarPeloTelefone(String telefone);
+    List<FornecedorDTO> findByTelefone(String telefone);
+
+    void deleteByNomeIgnoreCase(String nome);
 }
