@@ -1,19 +1,20 @@
 package com.mercearia.mercearia.repository;
 
 import com.mercearia.mercearia.dto.CategoriaDTO;
+import com.mercearia.mercearia.model.Categoria;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CategoriaRepository extends MongoRepository <CategoriaDTO, String>{
+public interface CategoriaRepository extends MongoRepository <Categoria, String>{
     @Override
-    List<CategoriaDTO> findAll();
+    List<Categoria> findAll();
 
-    List<CategoriaDTO> findCategoriaById(String id);
+    List<Categoria> findCategoriaById(String id);
 
-    List<CategoriaDTO> findByCategoriaIgnoreCase(String categoria);
+    List<Categoria> findByCategoriaIgnoreCase(String categoria);
 
     void deleteByCategoriaIgnoreCase(String categoria);
 }
