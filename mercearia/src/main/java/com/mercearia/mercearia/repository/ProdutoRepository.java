@@ -19,14 +19,10 @@ public interface ProdutoRepository extends MongoRepository<Produto, String> {
 
     List<Produto> findByNomeContainingIgnoreCase(String nome);
 
-    List<Produto> findByNomeIgnoreCase(String nome);
-
-    List<Produto> findByCategoria(String categoria);
 
     List<Produto> findByCategoriaIgnoreCase(String categoria);
 
     List<Produto> findByPreco(Double preco);
 
-    void deleteByNome(String nome);
 }
 
