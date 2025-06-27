@@ -9,11 +9,15 @@ import java.util.List;
 @Repository
 public interface CategoriaRepository extends MongoRepository<Categoria, String> {
 
-    List<Categoria> findByCategoria(String categoria);
-
     @Override
     List<Categoria> findAll();
 
-    void deleteByCategoria(String categoria);
+
+    List<Categoria> findByCategoriaIgnoreCase(String categoria);
+
+    List<Categoria> findCategoriaById(String id);
+
+
+    void deleteByCategoriaIgnoreCase(String categoria);
 }
 

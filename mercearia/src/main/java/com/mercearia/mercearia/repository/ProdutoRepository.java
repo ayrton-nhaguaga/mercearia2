@@ -7,20 +7,26 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProdutoRepository extends MongoRepository<Produto, String> {
+
     @Override
     Optional<Produto> findById(String id);
 
     @Override
-    List<Produto> findAllById(Iterable<String> strings);
+    List<Produto> findAllById(Iterable<String> ids);
 
     @Override
     List<Produto> findAll();
 
-    List<Produto> findByNomeContainingIgnoreCase(String name);
+    List<Produto> findByNomeContainingIgnoreCase(String nome);
+
+    List<Produto> findByNomeIgnoreCase(String nome);
 
     List<Produto> findByCategoria(String categoria);
 
-    List<Produto> findByPreco(String preco);
+    List<Produto> findByCategoriaIgnoreCase(String categoria);
+
+    List<Produto> findByPreco(Double preco);
 
     void deleteByNome(String nome);
 }
+
