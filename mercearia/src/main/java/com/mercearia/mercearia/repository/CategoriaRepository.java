@@ -17,7 +17,5 @@ public interface CategoriaRepository extends MongoRepository<Categoria, String> 
 
     List<Categoria> findCategoriaById(String id);
 
-
-    void deleteByCategoriaIgnoreCase(String categoria);
 }
 

@@ -39,7 +39,24 @@ public class FornecedorService {
         return repository.findByTelefone(telefone);
     }
 
-    public void deleteFornecedorByNome(String nome){
-        repository.deleteByNome(nome);
+    public List<Fornecedor> updateFornecedor(String nome, FornecedorDTO dto){
+        List<Fornecedor> fornecedores = repository.findByNomeIgnoreCase(nome);
+        for (Fornecedor f : fornecedores){
+            f.setNome(dto.getNome());
+            f.setTelefone(dto.getTelefone());
+            f.setEndereco(dto.getEndereco());
+            f.setCategoria(dto.getCategoria());
+            repository.save(f);
+        }
+        return  fornecedores;
+    }
+
+    public boolean deleteFornecedor (String nome){
+        List<Fornecedor> fornecedores = repository.findByNomeIgnoreCase(nome);
+        if (!fornecedores.isEmpty()){
+            repository.deleteAll();
+            return true;
+        }
+        return  false;
     }
 }

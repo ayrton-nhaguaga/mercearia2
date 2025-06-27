@@ -20,15 +20,15 @@ public class CategoriaService {
         return repository.save(categoria);
     }
 
-    public List<Categoria> retornarTodasCategorias(){
+    public List<Categoria> getTodasCategorias(){
         return repository.findAll();
     }
 
-    public List<Categoria> retornarCategoriaPelaCategoria(String categoria){
+    public List<Categoria> getByCategoriaPelaCategoria(String categoria){
         return repository.findByCategoriaIgnoreCase(categoria);
     }
 
-    public List<Categoria> atualizarCategoriaPelaCategoria(String categoria, CategoriaDTO dto){
+    public List<Categoria> updateCategoriaPelaCategoria(String categoria, CategoriaDTO dto){
         List<Categoria> existentes = repository.findByCategoriaIgnoreCase(categoria);
         for (Categoria c : existentes){
             c.setCategoria(dto.getCategoria());
@@ -37,7 +37,7 @@ public class CategoriaService {
         return existentes;
     }
 
-    public boolean apagarCategoriaPelaCategoria(String categoria){
+    public boolean deleteCategoriaPelaCategoria(String categoria){
         List<Categoria> categorias = repository.findByCategoriaIgnoreCase(categoria);
         if (!categorias.isEmpty()) {
             repository.deleteAll(categorias);

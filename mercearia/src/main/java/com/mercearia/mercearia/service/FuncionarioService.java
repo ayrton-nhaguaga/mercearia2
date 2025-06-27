@@ -43,8 +43,24 @@ public class FuncionarioService {
         return repository.findByEmail(email);
     }
 
-    public void deleteByNome(String nome){
-        repository.deleteByNome(nome);
+    public List<Funcionario> updateFuncionario(String nome, FuncionarioDTO dto){
+        List<Funcionario> funcionarios = repository.findByNomeContainingIgnoreCase(nome);
+        for (Funcionario f : funcionarios){
+            f.setNome(dto.getNome());
+            f.setTelefone(dto.getTelefone());
+            f.setEndereco(dto.getEndereco());
+            f.setEmail(dto.getEmail());
+            repository.save(f);
+        }
+        return funcionarios;
     }
 
+    public boolean deleteFuncionario(String nome){
+        List<Funcionario> funcionarios = repository.findByNomeContainingIgnoreCase(nome);
+        if (!funcionarios.isEmpty()){
+            repository.deleteAll();
+            return true;
+        }
+        return false;
+    }
 }
