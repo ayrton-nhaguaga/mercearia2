@@ -24,7 +24,7 @@ public interface FornecedorRepository extends MongoRepository<Fornecedor, String
 
     List<Fornecedor> findByEnderecoIgnoreCase(String endereco);
 
-    List<Fornecedor> findByTelefone(String telefone);
+    List<Fornecedor> findByTelefoneIgnoreCase(String telefone);
 
-    void deleteByNome(String nome);
+    List<Fornecedor> findByCategoriaIgnoreCase(String categoria);
 }

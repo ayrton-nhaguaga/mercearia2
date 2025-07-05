@@ -36,7 +36,11 @@ public class FornecedorService {
     }
 
     public List<Fornecedor> getByTelefone(String telefone){
-        return repository.findByTelefone(telefone);
+        return repository.findByTelefoneIgnoreCase(telefone);
+    }
+
+    public List<Fornecedor> getByCategoria(String categoria){
+        return repository.findByCategoriaIgnoreCase(categoria);
     }
 
     public List<Fornecedor> updateFornecedor(String nome, FornecedorDTO dto){
