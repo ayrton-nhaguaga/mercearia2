@@ -25,9 +25,9 @@ public interface VendaRepository extends MongoRepository<Venda, String> {
     List<Venda> findByData(LocalDate data);
 
 
-    List<Venda> findByItemVendido(String itemVendido);
+    List<Venda> findByItemVendidoIngoreCase(String itemVendido);
 
     List<Venda> findByQuantidade(int quantidade);
 
-    List<Venda> findByFuncionario(String funcionario);
+    List<Venda> findByFuncionarioIgnoreCase(String funcionario);
 }

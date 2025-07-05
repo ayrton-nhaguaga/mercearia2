@@ -74,16 +74,16 @@ public class VendaService {
         return vendaRepository.findByData(data);
     }
 
-    public List<Venda> getByItemVendido(String itemVendido){
-        return vendaRepository.findByItemVendido(itemVendido);
+    public List<Venda> getByItemVendidoIngoreCase(String itemVendido){
+        return vendaRepository.findByItemVendidoIngoreCase(itemVendido);
     }
 
     public List<Venda> getByQuantidade(int quantidade){
         return vendaRepository.findByQuantidade(quantidade);
     }
 
-    public List<Venda> getByFuncionario(String funcionario){
-        return vendaRepository.findByFuncionario(funcionario);
+    public List<Venda> getByFuncionarioIgnoreCase(String funcionario){
+        return vendaRepository.findByFuncionarioIgnoreCase(funcionario);
     }
 
 }
