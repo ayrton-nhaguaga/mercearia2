@@ -9,12 +9,14 @@ import com.mercearia.mercearia.repository.EstoqueRepository;
 import com.mercearia.mercearia.repository.ProdutoRepository;
 import com.mercearia.mercearia.repository.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class VendaService {
 
     @Autowired
@@ -66,20 +68,20 @@ public class VendaService {
         return vendaRepository.findAll();
     }
 
-    public List<Venda> getByDataVendaBetween(LocalDate inicio, LocalDate fim){
+    public List<Venda> getByDataVendaBetween(LocalDateTime inicio, LocalDateTime fim){
         return vendaRepository.findByDataVendaBetween(inicio, fim);
     }
 
-    public List<Venda> getByDataDaVenda(LocalDate data){
+    public List<Venda> getByDataDaVenda(LocalDateTime data){
         return vendaRepository.findByData(data);
     }
 
     public List<Venda> getByItemVendidoIngoreCase(String itemVendido){
-        return vendaRepository.findByItemVendidoIngoreCase(itemVendido);
+        return vendaRepository.findByItemVendidoIgnoreCase(itemVendido);
     }
 
     public List<Venda> getByQuantidade(int quantidade){
-        return vendaRepository.findByQuantidade(quantidade);
+        return vendaRepository.findByQuantidadeVendida(quantidade);
     }
 
     public List<Venda> getByFuncionarioIgnoreCase(String funcionario){

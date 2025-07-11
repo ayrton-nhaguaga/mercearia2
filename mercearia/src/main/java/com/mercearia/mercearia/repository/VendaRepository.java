@@ -3,12 +3,14 @@ package com.mercearia.mercearia.repository;
 import com.mercearia.mercearia.model.Venda;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface VendaRepository extends MongoRepository<Venda, String> {
 
     @Override
@@ -20,14 +22,14 @@ public interface VendaRepository extends MongoRepository<Venda, String> {
     @Override
     List<Venda> findAllById(Iterable<String> ids);
 
-    List<Venda> findByDataVendaBetween(LocalDate inicio, LocalDate fim);
+    List<Venda> findByDataVendaBetween(LocalDateTime inicio, LocalDateTime fim);
 
-    List<Venda> findByData(LocalDate data);
+    List<Venda> findByData(LocalDateTime data);
 
 
-    List<Venda> findByItemVendidoIngoreCase(String itemVendido);
+    List<Venda> findByItemVendidoIgnoreCase(String itemVendido);
 
-    List<Venda> findByQuantidade(int quantidade);
+    List<Venda> findByQuantidadeVendida(int quantidadeVendida);
 
     List<Venda> findByFuncionarioIgnoreCase(String funcionario);
 }

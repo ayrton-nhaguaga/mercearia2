@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+
+@Repository
 public interface FuncionarioRepository extends MongoRepository<Funcionario, String>{
     @Override
     Optional<Funcionario> findById(String id);

@@ -33,13 +33,13 @@ public class VendaController {
     }
 
     @GetMapping("/data_vendaBetween")
-    public ResponseEntity<List<Venda>> getByDataVendaBetween(@RequestParam LocalDate inicio, @RequestParam LocalDate fim){
+    public ResponseEntity<List<Venda>> getByDataVendaBetween(@RequestParam LocalDateTime inicio, @RequestParam LocalDateTime fim){
         List<Venda> vendas = vendaService.getByDataVendaBetween(inicio, fim);
         return new ResponseEntity<>(vendas, HttpStatus.OK);
     }
 
     @GetMapping("/data_venda")
-    public ResponseEntity<List<Venda>> getByDataVenda(@RequestParam LocalDate data){
+    public ResponseEntity<List<Venda>> getByDataVenda(@RequestParam LocalDateTime data){
         List<Venda> vendas = vendaService.getByDataDaVenda(data);
         return new ResponseEntity<>(vendas, HttpStatus.OK);
     }
