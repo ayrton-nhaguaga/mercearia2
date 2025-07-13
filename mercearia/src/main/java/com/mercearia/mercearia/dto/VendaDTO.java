@@ -22,5 +22,5 @@ public class VendaDTO {
     @NotBlank
     private String quantidade;
 
-    private LocalDateTime data;
+    private LocalDateTime dataVenda;
 }

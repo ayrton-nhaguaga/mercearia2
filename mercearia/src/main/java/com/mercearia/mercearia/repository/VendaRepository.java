@@ -24,7 +24,7 @@ public interface VendaRepository extends MongoRepository<Venda, String> {
 
     List<Venda> findByDataVendaBetween(LocalDateTime inicio, LocalDateTime fim);
 
-    List<Venda> findByData(LocalDateTime data);
+    List<Venda> findByDataVenda(LocalDateTime data);
 
 
     List<Venda> findByItemVendidoIgnoreCase(String itemVendido);

@@ -1,6 +1,6 @@
 package com.mercearia.mercearia.security;
 
-import com.mercearia.mercearia.service.UserService;
+import com.mercearia.mercearia.service.CustomUserDetailsService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserService userService;
+    private CustomUserDetailsService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

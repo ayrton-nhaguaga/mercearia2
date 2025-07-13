@@ -15,5 +15,5 @@ public class Venda {
     private Produto itemVendido;
     private String funcionario;
     private int quantidadeVendida;
-    private LocalDateTime data;
+    private LocalDateTime dataVenda;
 }

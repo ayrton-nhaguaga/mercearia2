@@ -1,6 +1,7 @@
 package com.mercearia.mercearia.security;
 
 import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -11,7 +12,9 @@ import java.util.stream.Collectors;
 @Component
 public class JwtUtil {
 
-    private final String SECRET = "segredoMuitoSeguro";
+    @Value("${jwt.secret}")
+    private String SECRET;
+
     private final long EXPIRATION = 86400000; // 1 dia
 
     public String generateToken(UserDetails userDetails) {

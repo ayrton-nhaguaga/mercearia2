@@ -56,7 +56,7 @@ public class VendaService {
 
         // Cria e salva a venda
         Venda venda = new Venda();
-        venda.setData(data);
+        venda.setDataVenda(data);
         venda.setQuantidadeVendida(quantidadeVendida);
         venda.setItemVendido(pd);
         venda.setFuncionario(funcionario);
@@ -73,7 +73,7 @@ public class VendaService {
     }
 
     public List<Venda> getByDataDaVenda(LocalDateTime data){
-        return vendaRepository.findByData(data);
+        return vendaRepository.findByDataVenda(data);
     }
 
     public List<Venda> getByItemVendidoIngoreCase(String itemVendido){

@@ -5,6 +5,7 @@ import com.mercearia.mercearia.dto.*;
 import com.mercearia.mercearia.model.*;
 import com.mercearia.mercearia.repository.UserRepository;
 import com.mercearia.mercearia.security.JwtUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.*;
@@ -17,20 +18,14 @@ import org.springframework.security.core.Authentication;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private AuthenticationManager authManager;
-
-    @Autowired
-    private JwtUtil jwtUtil;
-
-    @Autowired
-    private UserRepository userRepo;
-
-    @Autowired
-    private PasswordEncoder encoder;
+    private final AuthenticationManager authManager;
+    private final JwtUtil jwtUtil;
+    private final UserRepository userRepo;
+    private final PasswordEncoder encoder;
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody AuthRequest request) {

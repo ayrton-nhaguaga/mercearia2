@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vendas")
+@RequestMapping("/api/vendas")
 public class VendaController {
 
     @Autowired
