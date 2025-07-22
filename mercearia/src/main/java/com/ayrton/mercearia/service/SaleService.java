@@ -28,7 +28,7 @@ public class SaleService {
     @Autowired
     private StockRepository stockRepository;
 
-    public Sale createVenda(String productName, StockDTO eDto, SaleDTO vDto, int quantitySold, SupplierDTO sDTO, LocalDateTime data) {
+    public Sale createVenda(String productName, StockDTO eDto, SaleDTO vDto, int quantitySold, LocalDateTime data) {
         // Verifica se tem produto no estoque suficiente
         if (eDto.getQuantity() < quantitySold) {
             throw new RuntimeException("Quantidade indisponível: " + quantitySold);
@@ -55,7 +55,7 @@ public class SaleService {
         sale.setSaleDate(data);
         sale.setQuantitySold(quantitySold);
         sale.setItemSold(pd);
-        // falta set de funcionario
+        sale.setSupplier(vDto.getSupplier());
 
         return saleRepository.save(sale);
     }

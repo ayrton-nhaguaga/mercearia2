@@ -29,5 +29,5 @@ public interface SaleRepository extends MongoRepository<Sale, String> {
 
     List<Sale> findByQuantitySold(int quantitySold);
 
-    List<Sale> findBySupplierNameIgnoreCase(String name);
+    List<Sale> findBySupplierNameIgnoreCase(String supplier);
 }

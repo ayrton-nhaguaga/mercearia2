@@ -1,5 +1,7 @@
 package com.ayrton.mercearia.controller;
 
+import com.ayrton.mercearia.dto.SaleDTO;
+import com.ayrton.mercearia.dto.StockDTO;
 import com.ayrton.mercearia.model.Sale;
 import com.ayrton.mercearia.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +19,13 @@ public class SaleController {
     @Autowired
     private SaleService saleService;
 
-    /**
+
     @PostMapping
-    public ResponseEntity<Sale> createSale(@RequestParam String productName, @RequestBody StockDTO eDto, @RequestBody SaleDTO vDto, @RequestParam int quantitySold, @RequestParam String funcionario, @RequestParam LocalDateTime data){
-        Sale sale = saleService.createVenda(nomeProduto, eDto, vDto, quantidadeVendida, funcionario, data);
+    public ResponseEntity<Sale> createSale(@RequestParam String productName, @RequestBody StockDTO eDto, @RequestBody SaleDTO vDto, @RequestParam int quantitySold, @RequestParam LocalDateTime data){
+        Sale sale = saleService.createVenda(productName, eDto, vDto, quantitySold, data);
         return new ResponseEntity<>(sale, HttpStatus.CREATED);
     }
-     */
+
 
     @GetMapping
     public ResponseEntity<List<Sale>> getAllVendas(){

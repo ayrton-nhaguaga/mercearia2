@@ -2,6 +2,7 @@ package com.ayrton.mercearia.infra.security;
 //Desabilitar as configuracoes padroes do Spring Security
 // configurar da forca que quero auteticacao Stateless
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,19 +25,27 @@ public class SecurityConfiguration {
     private SecurityFilter securityFilter;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws  Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                // autorizar as requisicoes http de acordo com a ROLE
-                .authorizeHttpRequests(autorize -> autorize
-                        // autorizar enpoint de login para todos
+                .authorizeHttpRequests(authorize -> authorize
+                        // Swagger - permitir acesso sem autenticação
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
+
+                        // autorizar endpoint de login para todos
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 
-                        // autorizar endpoint de registrar para teste;
+                        // autorizar endpoint de registrar para teste
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
 
-                        .requestMatchers(HttpMethod.POST, "/products", "/categories", "employees", "stocks", "suppliers").hasRole("ADMIN")
+                        // apenas ADMIN pode acessar estes
+                        .requestMatchers(HttpMethod.POST, "/products", "/categories", "/employees", "/stocks", "/suppliers").hasRole("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
@@ -48,10 +57,9 @@ public class SecurityConfiguration {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    // Criptografar a senha
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
+

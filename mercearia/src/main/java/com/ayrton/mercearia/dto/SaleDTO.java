@@ -18,7 +18,7 @@ public class SaleDTO {
 
     @NotBlank
     @Size(min = 1, max = 50)
-    private Supplier supplier;
+    private String supplier;
 
     @NotBlank
     private String quantitySold;

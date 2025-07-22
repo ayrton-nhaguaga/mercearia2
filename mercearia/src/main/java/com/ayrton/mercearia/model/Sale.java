@@ -13,7 +13,7 @@ public class Sale {
     @Id
     private String id;
     private Product itemSold;
-    private Supplier supplier;
+    private String supplier;
     private int quantitySold;
     private LocalDateTime saleDate;
 }
