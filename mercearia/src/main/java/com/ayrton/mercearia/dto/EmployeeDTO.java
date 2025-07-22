@@ -1,5 +1,6 @@
 package com.ayrton.mercearia.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -17,6 +18,7 @@ public class EmployeeDTO {
     @Size(min = 1, max = 50)
     private String telephone;
 
+    @Email
     @NotBlank
     @Size(min = 1, max = 200)
     private String email;
