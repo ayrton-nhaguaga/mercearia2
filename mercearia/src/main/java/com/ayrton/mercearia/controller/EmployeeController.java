@@ -26,32 +26,32 @@ public class EmployeeController {
 
     @GetMapping
     public ResponseEntity<List<Employee>> getAllEmployees(){
-        List<Employee> funcionarios = employeeService.getAllEmployees();
-        return new ResponseEntity<>(funcionarios, HttpStatus.OK);
+        List<Employee> employees = employeeService.getAllEmployees();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @GetMapping("/name")
     public ResponseEntity<List<Employee>> getByName(@RequestParam String name){
-        List<Employee> funcionarios = employeeService.getByNomeContainingIgnoreCase(name);
-        return new ResponseEntity<>(funcionarios, HttpStatus.OK);
+        List<Employee> employees = employeeService.getByNomeContainingIgnoreCase(name);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @GetMapping("/telephone")
     public ResponseEntity<List<Employee>> getByTelephone(@RequestParam String telephone){
-        List<Employee> funcionarios = employeeService.getByTelephone(telephone);
-        return new ResponseEntity<>(funcionarios, HttpStatus.OK);
+        List<Employee> employees = employeeService.getByTelephone(telephone);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @GetMapping("/address")
     public ResponseEntity<List<Employee>> getByAddress(@RequestParam String address){
-        List<Employee> funcionarios = employeeService.getByAddress(address);
-        return new ResponseEntity<>(funcionarios, HttpStatus.OK);
+        List<Employee> employees = employeeService.getByAddress(address);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @GetMapping("/email")
     public ResponseEntity<List<Employee>> getByEmail(@RequestParam String email){
-        List<Employee> funcionarios = employeeService.getByEmail(email);
-        return  new ResponseEntity<>(funcionarios, HttpStatus.OK);
+        List<Employee> employees = employeeService.getByEmail(email);
+        return  new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @PutMapping("/name")
