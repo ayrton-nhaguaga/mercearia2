@@ -4,13 +4,13 @@ This is a RESTful API for a **grocery store management system**, built with **Ja
 
 ## 🔧 Technologies Used
 
-- Java 17+
+- Java 17
 - Spring Boot
 - Spring Security (JWT - stateless auth)
 - Maven
 - MongoDB (NoSQL)
 - Jakarta Validation (for request validation)
-- Lombok (optional)
+- Lombok 
 - Swagger (OpenAPI)
 
 ## 📦 Features
@@ -22,11 +22,13 @@ The API supports full CRUD operations (Create, Read, Update, Delete) for the fol
 - ✅ Suppliers  
 - ✅ Sales  
 - ✅ Products  
-- ✅ Stock  
+- ✅ Stock
 
-### 🛡️ Authentication & Authorization
+  ### 🛡️ Authentication & Authorization
 
 - **JWT-based stateless authentication**
-- Role-based access control with customizable roles (e.g., `ADMIN`, `EMPLOYEE`)
+- Role-based access control with customizable roles (e.g., `ADMIN`, `USER`)
 - Endpoints are secured using Spring Security
 - Users must authenticate to access protected routes
+
+
